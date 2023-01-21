@@ -4,10 +4,10 @@ from django.db import models
 
 
 class Reservation(models.Model):
-    name = models.TextField(null=False, blank=False)
-    contact_number = models.FloatField(null=False, blank=False)
-    date = models.DateField(null=False, blank=False)
-    time = models.TimeField(null=False, blank=False)
+    name = models.TextField(max_length=50, null=False, blank=False)
+    number = models.FloatField(max_length=50, null=False, blank=False)
+    date = models.DateField(null=False, blank=False, default=False)
+    time = models.TimeField(null=False, blank=False, default=False)
     number_of_people = models.FloatField(max(0, 10), null=False, blank=False)
 
     def __str__(self):

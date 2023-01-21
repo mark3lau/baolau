@@ -9,7 +9,7 @@
 <body>
     <h1>Your Reservations</h1>
     <table>
-        {% for reservation in reservations %}
+        {% for reservation in make_reservation %}
             <tr>
                 <td>{{ reservation.date }}</td>
                 <td>{{ reservation.time }}</td>
