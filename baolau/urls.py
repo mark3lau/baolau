@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from restaurant.views import get_reservation_list, make_reservation
+from restaurant.views import get_reservation_list, make_reservation, edit_reservation
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', get_reservation_list, name='get_reservation_list'),
-    path('add', make_reservation, name='make_reservation')
+    path('add', make_reservation, name='make_reservation'),
+    path('edit/<reservation_id>', edit_reservation, name='edit')
 ]
+

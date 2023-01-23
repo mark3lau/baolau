@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Reservation
 from .forms import ReservationForm
 
@@ -25,3 +25,16 @@ def make_reservation(request):
     }
     return render(request, 'reservation/make_reservation.html', context)
 
+
+def edit_reservation(request, reservation_id):
+    reservation = get_object_or_404(Reservation, id=reservation_id)
+    if request.method == 'POST':
+        form = ReservationForm(request.POST, instance=reservation)
+        if form.is_valid():
+            form.save()
+            return redirect('get_reservation_list')
+    form = ReservationForm(instance=reservation)
+    context = {
+        'form': form
+    }
+    return render(request, 'restaurant/edit_reservation.html', context)
