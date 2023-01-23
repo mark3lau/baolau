@@ -10,36 +10,7 @@
     <h1>Make A Reservation</h1>
     <form method="POST" action="add">
         {% csrf_token %}
-        <div>
-            <p>
-                <label for="add_name">Name: </label>
-                <input type="text" id="add_name" name="add_name" />
-            </p>
-        </div>
-        <div>
-            <p>
-                <label for="add_number">Contact number: </label>
-                <input type="text" id="add_number" name="add_number" />
-            </p>
-        </div>
-        <div>
-            <p>
-                <label for="add_date">Date: </label>
-                <input type="date" id="add_date" name="add_date" />
-            </p>
-        </div>
-        <div>
-            <p>
-                <label for="add_time">Time: </label>
-                <input type="time" id="add_time" name="add_time" />
-            </p>
-        </div>
-        <div>
-            <p>
-                <label for="add_people">Number of people: </label>
-                <input type="number" id="add_people" name="add_people" />
-            </p>
-        </div>
+        {{ form.as_p }}
         <div>
             <p>
                 <button type="submit">Make Reservation</button>
