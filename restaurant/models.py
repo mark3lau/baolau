@@ -1,14 +1,16 @@
 from django.db import models
+from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
-# Create your models here.
+# STATUS = ((0, "Draft"), (1, "Published"))
 
 
 class Reservation(models.Model):
-    name = models.TextField(max_length=50, null=False, blank=False)
-    number = models.FloatField(max_length=50, null=False, blank=False)
-    date = models.DateField(null=False, blank=False, default=False)
-    time = models.TimeField(null=False, blank=False, default=False)
+    date = models.DateTimeField(null=False)
+    time = models.DateTimeField(null=False)
     number_of_people = models.FloatField(max(0, 10), null=False, blank=False)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="reservations")
+    slug = models.SlugField(max_length=200, unique=True)
 
     def __str__(self):
         return self.date

@@ -9,7 +9,7 @@
 <body>
     <h1>Your Reservations</h1>
     <table>
-        {% for reservation in make_reservation %}
+        {% for reservation in Reservations %}
             <tr>
                 <td>{{ reservation.date }}</td>
                 <td>{{ reservation.time }}</td>
@@ -20,6 +20,11 @@
         <td>
             <a href="/edit/{{ reservation.id }}">
                 <button>Edit</button>
+            </a>
+        </td>
+        <td>
+            <a href="/delete/{{ reservation.id }}">
+                <button>Delete</button>
             </a>
         </td>
     </table>
